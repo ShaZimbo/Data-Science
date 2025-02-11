@@ -1,0 +1,46 @@
+{
+	"books": [
+		{
+			"title": "Never Flinch",
+			"author": "Stephen King",
+			"publisher": "Hodder & Stoughton",
+			"publication_year": 2025,
+			"ISBN": "9781399744331"
+		},
+		{
+			"title": "Badjelly the Witch",
+			"author": "Spike Milligan",
+			"publisher": "Hobbs & Michael Joseph",
+			"publication_year": 1973,
+			"ISBN": "0718111125"
+		},
+		{
+			"title": "Wyrd Sisters",
+			"author": "Terry Pratchett",
+			"publisher": "Victor Gollancz Ltd",
+			"publication_year": 1988,
+			"ISBN": "0575043636"
+		},
+		{
+			"title": "There's a Wocket in My Pocket!",
+			"author": "Dr. Seuss",
+			"publisher": "HarperCollinsChildren'sBooks",
+			"publication_year": 2003,
+			"ISBN": "9780007169955"
+		},
+		{
+			"title": "Anthills of the Savannah",
+			"author": "Chinua Achebe",
+			"publisher": "Heinemann",
+			"publication_year": 1987,
+			"ISBN": "9780385260459"
+		},
+		{
+			"title": "The Prom Queen",
+			"author": "R.L. Stine",
+			"publisher": "Simon Pulse",
+			"publication_year": 1992,
+			"ISBN": "9780671724856"
+		}
+	]
+}
