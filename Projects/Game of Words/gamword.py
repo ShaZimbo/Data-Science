@@ -86,6 +86,6 @@ while True:
         menu_choice = menu_selection()
 
     # Exit section
-    while menu_choice == 'e':
+    if menu_choice == 'e':
         print(f"\nGoodbye {user_name}!!!\n")
         exit()
