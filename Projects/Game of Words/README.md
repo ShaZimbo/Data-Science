@@ -1,4 +1,4 @@
-The provided code snippet is part of a Python program designed to create a simple word-guessing game. The game begins by prompting the user to enter their name, which is then used to personalize the welcome message. The game informs the user that they need to guess a 5-letter word within 5 turns.
+The provided code is a Python program designed to create a simple word-guessing game. The game begins by prompting the user to enter their name, which is then used to personalize the welcome message. The game informs the user that they need to guess a 5-letter word within 5 turns.
 
 The menu_selection function displays a menu with two options: 'p' to play the game and 'e' to exit. It takes the user's input, converts it to lowercase, and checks if the input is valid. If the input is invalid, it prompts the user to try again. The function returns the user's selection.
 
