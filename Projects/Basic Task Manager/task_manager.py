@@ -59,7 +59,7 @@ def menu_selection():
 def register_user():
     """ Function to register a user"""
     print("\033[33m\n"
-          "NOTE: User names and passwords must exceed 4 characters"
+          "NOTE: User names and passwords must exceed 4 characters\n"
           "NOTE: User names and passwords cannot contain \",\" \n\033[0m")
     while True:
         n_user = sanitize_input(input("Input the new username:\n"))
@@ -71,7 +71,7 @@ def register_user():
             continue
         if n_user in get_user_data():
             print("\033[31m\n"
-                  "Username already exists."
+                  "Username already exists\n"
                   "Create a unique username\n\033[0m"
                   )
             continue
@@ -81,16 +81,17 @@ def register_user():
             input("Assign a password to this user:\n")
             )
         if len(n_password) < 5:
-            print("\033[31m\nThe password is too short."
+            print("\033[31m\nThe password is too short\n"
                   "It must be at least 5 characters long.\n\033[0m"
                   )
             continue
         if "," in n_password:
             print("\033[31m\nThe user name cannot contain \",\"\n\033[0m")
+            continue
         r_entry = sanitize_input(input("Confirm the password:\n"))
         if n_password != r_entry:
-            print("\033[31m\nThe passwords do not match."
-                  "Please try again.\n\033[0m"
+            print("\033[31m\nThe passwords do not match\n"
+                  "Please try again\n\033[0m"
                   )
             continue
         break
@@ -191,7 +192,7 @@ def edit_task(tasks, t_index):
           )
     field = input("Selection: ")
     while field not in ["1", "2", "3", "4", "5", "6"]:
-        print("\033[31m\nInvalid selection. Please try again\033[0m\n")
+        print("\033[31m\nInvalid selection\nPlease try again\033[0m\n")
         field = input("Selection: ")
     # Update field
     if field == "1":
@@ -199,8 +200,8 @@ def edit_task(tasks, t_index):
             input("Input the assigned username for the task:\n").strip()
             )
         while t_user not in get_user_data():
-            print("\033[31m\nInvalid username. "
-                  "Provide an existing username.\n\033[0m"
+            print("\033[31m\nInvalid username\n"
+                  "Provide an existing username\n\033[0m"
                   )
             t_user = sanitize_input(
                 input("Input the assigned username for the task:\n").strip())
@@ -223,7 +224,7 @@ def edit_task(tasks, t_index):
                                      ).strip())
         # Ensure t_due matches the format DD MMM YYYY
         while len(t_due) != 11 or t_due[2] != " " or t_due[6] != " ":
-            print("\033[31m\nInvalid date format. "
+            print("\033[31m\nInvalid date format\n"
                   "Provide the date in the format DD MMM YYYY\n\033[0m"
                   )
             t_due = sanitize_input(input("Enter the task due date "
@@ -237,8 +238,8 @@ def edit_task(tasks, t_index):
             input("Input the assigned username for the task:\n").strip()
             )
         while t_user not in get_user_data():
-            print("\033[31m\nInvalid username. "
-                  "Provide an existing username.\n\033[0m"
+            print("\033[31m\nInvalid username\n"
+                  "Provide an existing username\n\033[0m"
                   )
             t_user = sanitize_input(
                 input("Input the assigned username for the task:\n").strip()
@@ -250,7 +251,7 @@ def edit_task(tasks, t_index):
             ).strip())
         # Ensure t_due matches the format DD MMM YYYY
         while len(t_due) != 11 or t_due[2] != " " or t_due[6] != " ":
-            print("\033[31m\nInvalid date format. "
+            print("\033[31m\nInvalid date format\n"
                   "Provide the date in the format DD MMM YYYY\n\033[0m"
                   )
             t_due = sanitize_input(input("Enter the task due date "
@@ -344,7 +345,7 @@ password = input("Please enter your password:\n")
 
 # Validate username and password against user file
 while not validate_user(username, password):
-    print("\n\033[31mIncorrect username or password. "
+    print("\n\033[31mIncorrect username or password\n"
           "Please try again\n\033[0m"
           )
     username = input("Please enter your username:\n")
@@ -390,22 +391,22 @@ while True:
             user_index = input(
                 "Select the user number you would like to delete.\n"
                 "\033[33m\nEnter b to go back to the main menu:\033[0m\n"
-                )
+            )
             if user_index == "b":
-                continue
-            elif int(user_index) == 1:
-                print("\033[31m\nYou cannot delete the admin user\033[0m\n")
                 continue
             while not user_index.isdigit() or int(user_index) not in range(
                     1, len(user_list) + 1):
-                print("\033[31m\nInvalid user number."
-                      "Please try again\033[0m\n"
+                print("\033[31m\nInvalid user number\nPlease try again"
+                      "\033[0m\n"
                       )
                 user_index = input(
                     "Select the user number you would like to delete:\n"
                     )
             user_to_delete = list(user_list.keys())[int(user_index) - 1]
-            delete_user(user_list, user_to_delete)
+            if user_to_delete == "admin":
+                print("\033[31m\nYou cannot delete the admin user\033[0m\n")
+            else:
+                delete_user(user_list, user_to_delete)
 
     # Add task management section
     elif menu_choice == "tm":
@@ -415,12 +416,10 @@ while True:
             task_menu_choice = task_management_menu()
             # Add task section
             if task_menu_choice == "a":
-                task_user = input("Input the assigned username:\n"
-                                  ).strip()
+                task_user = input("Input the assigned username:\n").strip()
                 while task_user not in get_user_data():
-                    print("\033[31m\nInvalid username. "
-                          "Provide an existing username.\n\033[0m"
-                          )
+                    print("\033[31m\nInvalid username"
+                          "\nProvide an existing username\n\033[0m")
                     task_user = input("Input the assigned username:\n")
                 task_title = input("Add the task title:\n").strip()
                 task_desc = input("Enter the task description:\n").strip()
@@ -430,15 +429,18 @@ while True:
                 # Ensure task_due matches the format DD MMM YYYY
                 while len(task_due) != 11 or task_due[2] != " " or task_due[
                         6] != " ":
-                    print("\033[31m\nInvalid date format. "
-                          "Provide the date in the format DD MMM YYYY"
-                          "\n\033[0m"
+                    print("\033[31m\nInvalid date format\n"
+                          "Provide the date in the format DD MMM YYYY\n\033[0m"
                           )
                     task_due = input("Enter the task due date "
                                      "\033[33m(DD MMM YYYY)\033[0m:\n"
                                      ).strip()
                 add_task(get_tasks_data(),
-                         task_user, task_title, task_desc, task_due)
+                         task_user,
+                         task_title,
+                         task_desc,
+                         task_due
+                         )
 
             # Delete task section
             elif task_menu_choice == "d":
@@ -453,9 +455,8 @@ while True:
                     )
                 while not task_index.isdigit() or int(task_index) not in range(
                         1, len(task_list) + 1):
-                    print("\033[31m\n"
-                          "Invalid task number. Please try again\033[0m\n"
-                          )
+                    print("\033[31m\nInvalid task number\n"
+                          "Please try again\033[0m\n")
                     task_index = input(
                         "Select the task number you would like to delete:\n"
                         )
@@ -469,18 +470,13 @@ while True:
                 for i, task in enumerate(task_list):
                     print(f"Task {i + 1}")
                     display_task(task)
-                index = input(
-                    "Select the task number to mark complete:"
-                    "\n"
-                    )
+                index = input("Select the task number to mark complete:\n")
                 while not index.isdigit() or int(index) not in range(
                         1, len(task_list) + 1):
-                    print("\033[31m\nInvalid task number."
+                    print("\033[31m\nInvalid task number\n"
                           "Please try again\033[0m\n"
                           )
-                    index = input(
-                        "Select the task number to mark complete:\n"
-                        )
+                    index = input("Select the task number to mark complete:\n")
                 mark_task_complete(task_list, index)
 
             # Edit task section
@@ -494,7 +490,7 @@ while True:
                 task_index = input("Select the task number to update:\n")
                 while not task_index.isdigit() or int(task_index) not in range(
                         1, len(task_list) + 1):
-                    print("\033[31m\nInvalid task number."
+                    print("\033[31m\nInvalid task number\n"
                           "Please try again\033[0m\n"
                           )
                     task_index = input("Select the task number to update:\n")
@@ -506,7 +502,7 @@ while True:
 
             # Invalid section
             else:
-                print("\033[31m\nYou have entered an invalid input. "
+                print("\033[31m\nYou have entered an invalid input\n"
                       "Please try again\033[0m\n"
                       )
 
@@ -535,6 +531,6 @@ while True:
 
     # Invalid section
     else:
-        print("\033[31m\nYou have entered an invalid input. "
+        print("\033[31m\nYou have entered an invalid input\n"
               "Please try again\033[0m\n"
               )
