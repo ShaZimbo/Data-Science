@@ -4,9 +4,8 @@ from art import LOGO
 
 bids = {}
 
-print(LOGO)
-
 while True:
+    print(LOGO)
     bidder_name = input("Enter your name: ")
     bid_amount = float(input("Enter your bid amount: £"))
     bids[bidder_name] = bid_amount
