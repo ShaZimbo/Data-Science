@@ -1,0 +1,9 @@
+The provided code implements a quiz program using Object-Oriented Programming (OOP). It begins by importing necessary modules and classes: ART for displaying an ASCII art banner, Question for creating question objects, question_data for the quiz data, and QuizBrain for managing the quiz logic. These components work together to create a modular and reusable quiz application.
+
+The question_bank list is initialized to store all the questions for the quiz. A for loop iterates over the question_data, a list of dictionaries, where each dictionary contains a question and its correct answer. For each question, the Question class is used to create a new question object with the question text (Q_TEXT) and the correct answer (Q_ANSWER). These question objects are appended to the question_bank list, which serves as the data source for the quiz.
+
+An instance of the QuizBrain class, named quiz, is created and initialized with the question_bank. The QuizBrain class is responsible for managing the flow of the quiz, including presenting questions, checking answers, and tracking the user's score. The program then displays the ASCII art banner (ART) to introduce the quiz visually.
+
+The main quiz loop is implemented using a while loop that continues as long as the quiz.more_questions() method returns True. This method checks whether there are more questions left in the question_bank. Inside the loop, the quiz.next_question() method is called to display the next question to the user and handle their input. This ensures that the quiz progresses question by question until all questions have been asked.
+
+Once the loop ends (indicating that there are no more questions), the program prints a completion message along with the user's final score. The score is displayed showing the number of correct answers (quiz.score) out of the total number of questions (quiz.question_number). This provides the user with immediate feedback on their performance in the quiz.
