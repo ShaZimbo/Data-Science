@@ -4,11 +4,6 @@ from turtle import Turtle, Screen, colormode
 colormode(255)
 
 
-def position():
-    """ Sets position """
-    
-
-
 def ranc():
     """ Function to choose color """
     rgb_colors = [
