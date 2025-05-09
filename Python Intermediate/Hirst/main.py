@@ -36,10 +36,7 @@ SCREEN.exitonclick()
 
 # import colorgram
 
-# image = ('C:\\Users\\shazz\\Documents\\Data Science Bootcamp\\Udemy\\100
-#          'days of code\\Hirst\\spot_painting.jpg')
-
-# color_range = colorgram.extract(image, 20)
+# color_range = colorgram.extract('spot_painting.jpg', 20)
 
 # colors = []
 
