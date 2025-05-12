@@ -4,6 +4,8 @@ import random
 
 SCREEN = Screen()
 SCREEN.setup(925, 350)
+SCREEN.bgcolor("black")
+SCREEN.title("Turtle Race")
 bet = SCREEN.textinput("Place your bet",
                        "Who will win the race?\n"
                        "pink, purple, blue, green, yellow, orange, red.\n"
