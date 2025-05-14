@@ -1,8 +1,9 @@
 """ Take the turtle on a random walk """
 import random
-from turtle import Turtle, Screen, colormode
+from turtle import Turtle, Screen
 
-colormode(255)
+SCREEN = Screen()
+SCREEN.colormode(255)
 tommy = Turtle()
 
 
@@ -24,5 +25,4 @@ for _ in range(150):
     tommy.setheading(random.choice(angle))
     tommy.fd(20)
 
-SCREEN = Screen()
 SCREEN.exitonclick()
