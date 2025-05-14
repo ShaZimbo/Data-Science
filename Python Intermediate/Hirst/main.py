@@ -1,7 +1,9 @@
+""" Create random spot art inspired by Damien Hirst """
 import random
-from turtle import Turtle, Screen, colormode
+from turtle import Turtle, Screen
 
-colormode(255)
+SCREEN = Screen()
+SCREEN.colormode(255)
 
 
 def ranc():
@@ -31,12 +33,15 @@ for _ in range(1, 11):
     dot.fd(50*_)
     dot.rt(90)
 
-SCREEN = Screen()
+
 SCREEN.exitonclick()
 
 # import colorgram
 
-# color_range = colorgram.extract('spot_painting.jpg', 20)
+# image = ('C:\\Users\\shazz\\Documents\\Data Science Bootcamp\\Udemy\\100
+#          'days of code\\Hirst\\spot_painting.jpg')
+
+# color_range = colorgram.extract(image, 20)
 
 # colors = []
 
