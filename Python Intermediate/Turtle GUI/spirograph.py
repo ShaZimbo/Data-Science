@@ -1,9 +1,10 @@
 """ Create a spirograph """
 import random
-from turtle import Turtle, Screen, colormode
+from turtle import Turtle, Screen
 
 degrees = [0, 90, 180, 270]
-colormode(255)
+SCREEN = Screen()
+SCREEN.colormode(255)
 tommy = Turtle()
 
 
@@ -23,5 +24,4 @@ for m in range(times):
     tommy.lt(360/times)
     ranc()
 
-SCREEN = Screen()
 SCREEN.exitonclick()
