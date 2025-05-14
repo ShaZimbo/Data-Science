@@ -1,8 +1,10 @@
 """ Create shapes with an increasing number of corners """
 import random
-from turtle import Turtle, Screen, colormode
+from turtle import Turtle, Screen
 
-colormode(255)
+
+SCREEN = Screen()
+SCREEN.colormode(255)
 tommy = Turtle()
 
 
@@ -23,5 +25,4 @@ for t in range(3, 11):
         tommy.rt(360/t)
         tommy.fd(100)
 
-SCREEN = Screen()
 SCREEN.exitonclick()
