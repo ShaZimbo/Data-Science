@@ -16,5 +16,6 @@ with open(NAMES_PATH, "r", encoding="utf-8") as names:
         with open(LETTER_PATH, "r", encoding="utf-8") as letter:
             with open(READY_PATH, "w", encoding="utf-8") as invite:
                 for lines in letter.readlines():
+                    lines.strip()
                     x = lines.replace("[name]", f"{name}")
                     invite.write(x)
