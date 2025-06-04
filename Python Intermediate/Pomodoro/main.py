@@ -1,4 +1,4 @@
-from tkinter import Tk, Canvas, PhotoImage, Button, Label
+from tkinter import Tk, Canvas, PhotoImage, Button, Label, messagebox
 import math
 
 # ---------------------------- CONSTANTS ------------------------------- #
@@ -7,9 +7,9 @@ RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
-WORK_MIN = 25
-SHORT_BREAK_MIN = 5
-LONG_BREAK_MIN = 20
+WORK_MIN = 30
+SHORT_BREAK_MIN = 7
+LONG_BREAK_MIN = 15
 CHECK_MARK = ""
 REPS = 0
 TIMER = None
@@ -28,8 +28,10 @@ def reset_timer():
     """ reset settings """
     global REPS
     global CHECK_MARK
+    global TIMER
     window.after_cancel(TIMER)
     CHECK_MARK = ""
+    tick_label.config(text=CHECK_MARK)
     REPS = 0
     timer_label.config(text="Timer")
     canvas.itemconfig(timer_text, text="00:00")
@@ -42,22 +44,29 @@ def start_timer():
     global CHECK_MARK
     REPS += 1
     if REPS % 8 == 0:
-        count_down(LONG_BREAK_MIN * 60)
-        CHECK_MARK = ""
-        tick_label.config(text=CHECK_MARK)
-        timer_label.config(text="Break", fg=RED)
         bring_to_front()
+        ok = messagebox.showinfo("Break", "Start long break")
+        if ok:
+            count_down(LONG_BREAK_MIN * 60)
+            CHECK_MARK = ""
+            tick_label.config(text=CHECK_MARK)
+            timer_label.config(text="Break", fg=RED)
     elif REPS % 2 == 0:
-        count_down(SHORT_BREAK_MIN * 60)
-        tick_label.config(text=CHECK_MARK)
-        timer_label.config(text="Break", fg=PINK)
         bring_to_front()
+        ok = messagebox.showinfo("Break", "Start short break")
+        if ok:
+            count_down(SHORT_BREAK_MIN * 60)
+            tick_label.config(text=CHECK_MARK)
+            timer_label.config(text="Break", fg=PINK)
     else:
-        count_down(WORK_MIN * 60)
-        timer_label.config(text="Work", fg=GREEN)
-        CHECK_MARK += "✔"
-        tick_label.config(text=CHECK_MARK)
-        window.attributes("-topmost", False)
+        bring_to_front()
+        ok = messagebox.showinfo("Work", "Start working")
+        if ok:
+            count_down(WORK_MIN * 60)
+            timer_label.config(text="Work", fg=GREEN)
+            CHECK_MARK += "✔"
+            tick_label.config(text=CHECK_MARK)
+            window.attributes("-topmost", False)
 
 
 # ---------------------------- COUNTDOWN MECHANISM -------------------- #
@@ -86,7 +95,7 @@ window.config(padx=100, pady=50, bg=YELLOW)
 
 # Tomato
 canvas = Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
-tomato_img = PhotoImage(file="./Pomodoro/tomato.png")
+tomato_img = PhotoImage(file="img.png")
 canvas.create_image(100, 112, image=tomato_img)
 
 # Timer
@@ -110,3 +119,4 @@ tick_label = Label(text="", fg=GREEN, bg=YELLOW, font=(FONT_NAME, 20, "bold"))
 tick_label.grid(column=1, row=2)
 
 window.mainloop()
+
