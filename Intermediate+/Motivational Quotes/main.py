@@ -23,6 +23,6 @@ if day_of_week == 2:
         connection.login(user=MY_EMAIL, password=PASSWORD)
         connection.sendmail(
             from_addr=MY_EMAIL,
-            to_addrs="shanwratten@gmail.com",
+            to_addrs="MY_EMAIL",
             msg=f"Subject:Wednesday Motivational Quote\n\n{QUOTE}"
             )
