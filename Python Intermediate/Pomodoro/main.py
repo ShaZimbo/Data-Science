@@ -95,7 +95,7 @@ window.config(padx=100, pady=50, bg=YELLOW)
 
 # Tomato
 canvas = Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
-tomato_img = PhotoImage(file="img.png")
+tomato_img = PhotoImage(file="tomato.png")
 canvas.create_image(100, 112, image=tomato_img)
 
 # Timer
