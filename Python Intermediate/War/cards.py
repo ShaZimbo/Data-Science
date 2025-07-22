@@ -46,7 +46,3 @@ class Deck:
     def deal_one(self):
         """ Deal a new card """
         return self.all_cards.pop()
-
-cards = Deck()
-cards.shuffle()
-print(cards.all_cards[0])
